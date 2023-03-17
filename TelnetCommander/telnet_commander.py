@@ -4,12 +4,6 @@ import time
 import logging
 
 
-# def str_to_bytes(text):
-#     encoded = text.encode('ascii')
-#     result_bytes = bytearray(encoded)
-#     return result_bytes
-
-
 def create_commander(device_ip, states, initial_state, logger=None):
     if not logger:
         logger = logging.getLogger()

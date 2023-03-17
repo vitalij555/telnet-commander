@@ -8,13 +8,11 @@ on:
     types: [created]
   push:
     branches:
-      - master    
+      - master
 
 jobs:
   deploy:
-
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v2
     - name: Set up Python
