@@ -2,7 +2,7 @@ import asyncio, telnetlib3
 import inspect
 import time
 import logging
-
+import platform
 
 def create_commander(device_ip, states, initial_state, logger=None):
     if not logger:
@@ -64,7 +64,9 @@ def create_commander(device_ip, states, initial_state, logger=None):
                         break
                 time.sleep(1)
 
-        # loop = asyncio.get_event_loop()
+        if platform.system() == 'Windows':
+            asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
+
         loop = asyncio.new_event_loop()
         asyncio.set_event_loop(loop)
         coro = telnetlib3.open_connection(device_ip, shell=shell, encoding=False, force_binary=True)
